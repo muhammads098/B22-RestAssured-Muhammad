@@ -41,6 +41,17 @@ public class SpartanTestsWithParameters {
 
 
     }
+    @DisplayName("GET request to /api/spartans/{id} with ID 500")
+    @Test
+    public void test2(){
+        Response response = given().accept(ContentType.JSON).and().pathParam("id",500).when().get("/api/spartans/{id}");
+        assertEquals(404,response.statusCode());
+        assertEquals("application/json",response.contentType());
+        assertTrue(response.body().asString().contains("Not Found"));
+
+
+
+    }
 
 
 }
