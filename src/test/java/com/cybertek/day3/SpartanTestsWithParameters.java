@@ -1,4 +1,4 @@
-package day3;
+package com.cybertek.day3;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
