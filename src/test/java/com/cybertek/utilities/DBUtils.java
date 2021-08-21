@@ -179,4 +179,7 @@ public class DBUtils {
         int rowCount = resultSet.getRow();
         return rowCount;
     }
+
+    public static void createConnection(String dbUrl, String dbUsername, String dbPassword) {
+    }
 }
