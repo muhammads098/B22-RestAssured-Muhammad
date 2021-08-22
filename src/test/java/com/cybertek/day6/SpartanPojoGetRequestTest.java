@@ -1,5 +1,6 @@
 package com.cybertek.day6;
 
+import com.cybertek.pojo.Search;
 import com.cybertek.pojo.Spartan;
 import com.cybertek.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
@@ -14,7 +15,7 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
 
     @DisplayName("GET one spartan and convert it to Spartan Object")
     @Test
-    public void oneSpartanPojo(){
+    public void oneSpartanPojo() {
 
         Response response = given().accept(ContentType.JSON)
                 .and().pathParam("id", 15)
@@ -47,7 +48,7 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
 
     @DisplayName("Get one spartan from search endpoint result and use POJO")
     @Test
-    public void spartanSearchWithPojo(){
+    public void spartanSearchWithPojo() {
         ///spartans/search?nameContains=a&gender=Male
         // send get request to above endpoint and save first object with type Spartan POJO
         JsonPath jsonPath = given().accept(ContentType.JSON)
@@ -65,6 +66,27 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
         System.out.println("s1.getGender() = " + s1.getGender());
 
 
+    }
+
+    @Test
+    public void test3(){
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParams("nameContains", "a",
+                        "gender", "Male")
+                .when().get("/api/spartans/search")
+                .then().statusCode(200)
+                .extract().response();
+
+        Search searchResult = response.as(Search.class);
+
+        System.out.println(searchResult.getContent().get(0).getName());
+    }
+
+    @Test
+    public void test4(){
+
 
     }
+
+
 }
