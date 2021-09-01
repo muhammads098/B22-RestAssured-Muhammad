@@ -11,7 +11,7 @@ public class SpartanNewBase {
     public static void init(){
         //save baseurl inside this variable so that we dont need to type each http method.
         baseURI = "http://34.207.125.3";
-        port = 7000;
+        port = 8000;
         basePath ="/api";
     }
 
